@@ -118,6 +118,7 @@ def parse_html(raw_html):
 
     return parse_body(list(table.children)[7:55])
 
+
 async def fetch_and_parse(sem, session, url, loop):
     async with sem:
         html = await fetch(session, url)
@@ -161,7 +162,7 @@ def get_config():
     parser.add_argument("-c", "--concurrenct", dest="concurrent", type=int, default=1, help="Number of concurrent connections")
     parser.add_argument("-r", "--rate", dest="rate", type=int, default=1, help="Requests per second target")
 
-    parser.add_argument("-o", "--outfile", dest="out", default=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+    parser.add_argument("-o", "--outfile", dest="out", default=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S.csv"),
                         help="output file")
 
     return parser.parse_args()
